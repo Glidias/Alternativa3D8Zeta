@@ -28,14 +28,10 @@ package alternativa.engine3d.objects {
 		 */
 		alternativa3d var jointTransform:Transform3D = new Transform3D();
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var bindPoseTransform:Transform3D = new Transform3D();
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function setBindPoseMatrix(matrix:Vector.<Number>):void {
 			bindPoseTransform.initFromVector(matrix);
 		}
@@ -65,9 +61,7 @@ package alternativa.engine3d.objects {
 			bindPoseTransform.l = data[14];
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function calculateBindingMatrices():void {
 			for (var child:Object3D = childrenList; child != null; child = child.next) {
 				var joint:Joint = child as Joint;
@@ -82,9 +76,7 @@ package alternativa.engine3d.objects {
 		}
 
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function calculateTransform():void {
 			if (bindPoseTransform != null) {
 				jointTransform.combine(localToGlobalTransform, bindPoseTransform);

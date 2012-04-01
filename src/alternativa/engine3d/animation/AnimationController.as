@@ -62,7 +62,7 @@ package alternativa.engine3d.animation {
 		/**
 		 * @private 
 		 */
-		private var lastTime:int = -1;
+	//	private var lastTime:int = -1;
 
 		/**
 		 * @private 
@@ -98,22 +98,18 @@ package alternativa.engine3d.animation {
 				this._root = value;
 			}
 		}
+		
+		public function refresh():void {
+			update(0);
+		}
 
 		/**
 		 * Plays animations on the time interval passed since the last <code>update()</code> call.
 		 * If <code>freeze()</code> method was called after the last <code>update(),</code>
 		 * animation will continue from that moment.
 		 */
-		public function update():void {
-			var interval:Number;
-			if (lastTime < 0) {
-				lastTime = getTimer();
-				interval = 0;
-			} else {
-				var time:int = getTimer();
-				interval = 0.001*(time - lastTime);
-				lastTime = time;
-			}
+		public function update(interval:Number):void {
+			
 			if (_root == null) {
 				return;
 			}
@@ -211,7 +207,7 @@ package alternativa.engine3d.animation {
 		 * @see #update
 		 */
 		public function freeze():void {
-			lastTime = -1;
+			//lastTime = -1;
 		}
 
 	}

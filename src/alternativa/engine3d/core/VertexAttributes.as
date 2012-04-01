@@ -59,9 +59,7 @@ package alternativa.engine3d.core {
 		 */
 		public static const TEXCOORDS:Vector.<uint> = Vector.<uint>([8,9,10,11,12,13,14,15]);
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d static const FORMATS:Array = [
 			Context3DVertexBufferFormat.FLOAT_1,	//NONE
 			Context3DVertexBufferFormat.FLOAT_3,	//POSITION

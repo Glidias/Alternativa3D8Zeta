@@ -252,9 +252,7 @@ package alternativa.engine3d.shadows {
             return mesh;
         }
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function process(camera:Camera3D):void {
 			var i:int;
 			var object:Object3D;
@@ -790,9 +788,7 @@ package alternativa.engine3d.shadows {
 			return Procedure.compileFromArray(shaderArr, "DirectionalShadowMapFragment");
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d override function setup(drawUnit:DrawUnit, vertexLinker:Linker, fragmentLinker:Linker, surface:Surface):void {
 			// Set transfer matrix to shadowmap.
 			objectToShadowMapTransform.combine(cameraToShadowMapUVProjection, surface.object.localToCameraTransform);
@@ -836,9 +832,7 @@ package alternativa.engine3d.shadows {
 			return _mapSize;
 		}
 		
-		/**
-		 * @private
-		 */
+		
 		public function set mapSize(value:int):void {
 			if (value != _mapSize) {
 				this._mapSize = value;
@@ -864,9 +858,7 @@ package alternativa.engine3d.shadows {
 			return _pcfOffset;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set pcfOffset(value:Number):void {
 			_pcfOffset = value;
 			type = _pcfOffset > 0 ? "S" : "s";

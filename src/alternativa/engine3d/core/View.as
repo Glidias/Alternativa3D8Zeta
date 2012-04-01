@@ -99,14 +99,10 @@ package alternativa.engine3d.core {
 		 */
 		public var antiAlias:int;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var _width:int;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var _height:int;
 		
 		private var backBufferContext3D:Context3D;
@@ -114,9 +110,7 @@ package alternativa.engine3d.core {
 		private var backBufferHeight:int = -1;
 		private var backBufferAntiAlias:int = -1;
 		
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var _canvas:BitmapData = null;
 
 		/**
@@ -136,13 +130,9 @@ package alternativa.engine3d.core {
 		private var procedures:Vector.<Procedure> = new Vector.<Procedure>();
 		private var surfacesLength:int = 0;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var raysOrigins:Vector.<Vector3D> = new Vector.<Vector3D>();
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var raysDirections:Vector.<Vector3D> = new Vector.<Vector3D>();
 		private var raysCoefficients:Vector.<Point> = new Vector.<Point>();
 		private var raysSurfaces:Vector.<Vector.<Surface>> = new Vector.<Vector.<Surface>>();
@@ -150,9 +140,7 @@ package alternativa.engine3d.core {
 		private var raysIs:Vector.<int> = new Vector.<int>();
 		private var raysJs:Vector.<int> = new Vector.<int>();
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var raysLength:int = 0;
 
 		private var lastEvent:MouseEvent;
@@ -372,9 +360,7 @@ package alternativa.engine3d.core {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function calculateRays(camera:Camera3D):void {
 			var i:int;
 			var mouseEvent:MouseEvent;
@@ -462,9 +448,7 @@ package alternativa.engine3d.core {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function addSurfaceToMouseEvents(surface:Surface, geometry:Geometry, procedure:Procedure):void {
 			surfaces[surfacesLength] = surface;
 			geometries[surfacesLength] = geometry;
@@ -472,9 +456,7 @@ package alternativa.engine3d.core {
 			surfacesLength++;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function prepareToRender(stage3D:Stage3D, context:Context3D):void {
 			if (_canvas == null) {
 				var vis:Boolean = this.visible;
@@ -513,9 +495,7 @@ package alternativa.engine3d.core {
 			context.clear(r, g, b, backgroundAlpha);
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function processMouseEvents(context:Context3D, camera:Camera3D):void {
 			var i:int;
 			// Mouse events
@@ -1071,9 +1051,7 @@ package alternativa.engine3d.core {
 			return _canvas != null;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set renderToBitmap(value:Boolean):void {
 			if (value) {
 				if (_canvas == null) createRenderBitmap();
@@ -1123,9 +1101,7 @@ package alternativa.engine3d.core {
 			return _logoAlign;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set logoAlign(value:String):void {
 			_logoAlign = value;
 			resizeLogo();
@@ -1138,9 +1114,7 @@ package alternativa.engine3d.core {
 			return _logoHorizontalMargin;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set logoHorizontalMargin(value:Number):void {
 			_logoHorizontalMargin = value;
 			resizeLogo();
@@ -1153,9 +1127,7 @@ package alternativa.engine3d.core {
 			return _logoVerticalMargin;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set logoVerticalMargin(value:Number):void {
 			_logoVerticalMargin = value;
 			resizeLogo();
@@ -1191,9 +1163,7 @@ package alternativa.engine3d.core {
 			return _width;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override public function set width(value:Number):void {
 			if (value < 50) value = 50;
 			_width = value;
@@ -1208,9 +1178,7 @@ package alternativa.engine3d.core {
 			return _height;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override public function set height(value:Number):void {
 			if (value < 50) value = 50;
 			_height = value;
@@ -1218,93 +1186,67 @@ package alternativa.engine3d.core {
 			resizeLogo();
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override public function addChild(child:DisplayObject):DisplayObject {
 			throw new Error("Unsupported operation.");
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override public function removeChild(child:DisplayObject):DisplayObject {
 			throw new Error("Unsupported operation.");
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override public function addChildAt(child:DisplayObject, index:int):DisplayObject {
 			throw new Error("Unsupported operation.");
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override public function removeChildAt(index:int):DisplayObject {
 			throw new Error("Unsupported operation.");
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override public function removeChildren(beginIndex:int = 0, endIndex:int = 2147483647):void {
 			throw new Error("Unsupported operation.");
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override public function getChildAt(index:int):DisplayObject {
 			throw new Error("Unsupported operation.");
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override public function getChildIndex(child:DisplayObject):int {
 			throw new Error("Unsupported operation.");
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override public function setChildIndex(child:DisplayObject, index:int):void {
 			throw new Error("Unsupported operation.");
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override public function swapChildren(child1:DisplayObject, child2:DisplayObject):void {
 			throw new Error("Unsupported operation.");
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override public function swapChildrenAt(index1:int, index2:int):void {
 			throw new Error("Unsupported operation.");
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override public function get numChildren():int {
 			return 0;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override public function getChildByName(name:String):DisplayObject {
 			throw new Error("Unsupported operation.");
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override public function contains(child:DisplayObject):Boolean {
 			throw new Error("Unsupported operation.");
 		}

@@ -28,32 +28,24 @@ package alternativa.engine3d.animation.keys {
 
 		private var lastKey:NumberKey;
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function get keyFramesList():Keyframe {
 			return keyList;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function set keyFramesList(value:Keyframe):void {
 			keyList = NumberKey(value);
 		}
 
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function get lastKey():Keyframe {
 			return lastKey;
 		}
 
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function set lastKey(value:Keyframe):void {
 			lastKey = NumberKey(value);
 		}
@@ -96,9 +88,7 @@ package alternativa.engine3d.animation.keys {
 
 		private var recentKey:NumberKey = null;
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function blend(time:Number, weight:Number, state:AnimationState):void {
 			if (property == null) {
 				return;
@@ -131,16 +121,12 @@ package alternativa.engine3d.animation.keys {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function createKeyFrame():Keyframe {
 			return new NumberKey();
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function interpolateKeyFrame(dest:Keyframe, a:Keyframe, b:Keyframe, value:Number):void {
 			NumberKey(dest).interpolate(NumberKey(a), NumberKey(b), value);
 		}

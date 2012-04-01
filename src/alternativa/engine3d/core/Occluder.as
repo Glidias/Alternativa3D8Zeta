@@ -32,14 +32,10 @@ package alternativa.engine3d.core {
 		
 		private var debugWire:WireFrame;
 		
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var planeList:CullingPlane;
 		
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var enabled:Boolean;
 		
 		/**
@@ -122,17 +118,13 @@ package alternativa.engine3d.core {
 			}
 		}
 		
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function calculateVisibility(camera:Camera3D):void {
 			camera.occluders[camera.occludersLength] = this;
 			camera.occludersLength++;
 		}
 		
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function collectDraws(camera:Camera3D, lights:Vector.<Light3D>, lightsLength:int):void {
 			// Debug
 			if (camera.debug) {

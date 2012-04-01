@@ -36,13 +36,9 @@ package alternativa.engine3d.objects {
 		 */
 		public var geometry:Geometry;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var _surfaces:Vector.<Surface> = new Vector.<Surface>();
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var _surfacesLength:int = 0;
 
 		/**
@@ -120,23 +116,17 @@ package alternativa.engine3d.objects {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function get useLights():Boolean {
 			return true;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function updateBoundBox(boundBox:BoundBox, transform:Transform3D = null):void {
 			if (geometry != null) geometry.updateBoundBox(boundBox, transform);
 		}
 		
-		/**
-		 * @private
-		 */
+		
 		alternativa3d override function fillResources(resources:Dictionary, hierarchy:Boolean = false, resourceType:Class = null):void {
 			if (geometry != null && (resourceType == null || geometry is resourceType)) resources[geometry] = true;
 			for (var i:int = 0; i < _surfacesLength; i++) {
@@ -146,9 +136,7 @@ package alternativa.engine3d.objects {
 			super.fillResources(resources, hierarchy, resourceType);
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function collectDraws(camera:Camera3D, lights:Vector.<Light3D>, lightsLength:int):void {
 			for (var i:int = 0; i < _surfacesLength; i++) {
 				var surface:Surface = _surfaces[i];
@@ -158,9 +146,7 @@ package alternativa.engine3d.objects {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function collectGeometry(collider:EllipsoidCollider, excludedObjects:Dictionary):void {
 			collider.geometries.push(geometry);
 			collider.transforms.push(localToGlobalTransform);

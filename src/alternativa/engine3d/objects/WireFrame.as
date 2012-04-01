@@ -39,9 +39,7 @@ package alternativa.engine3d.objects {
 	public class WireFrame extends Object3D {
 
 		private static const cachedPrograms:Dictionary = new Dictionary(true);
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var shaderProgram:ShaderProgram;
 		private var cachedContext3D:Context3D;
 
@@ -131,16 +129,16 @@ package alternativa.engine3d.objects {
 		/**
 		 * Transparency.
 		 */
+		/*
 		public function get alpha():Number {
 			return _colorVec[3];
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set alpha(value:Number):void {
 			_colorVec[3] = value;
 		}
+		*/
 
 		/**
 		 * Color
@@ -149,9 +147,7 @@ package alternativa.engine3d.objects {
 			return (_colorVec[0]*255 << 16) | (_colorVec[1]*255 << 8) | (_colorVec[2]*255);
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set color(value:uint):void {
 			_colorVec[0] = ((value >> 16) & 0xff)/255;
 			_colorVec[1] = ((value >> 8) & 0xff)/255;
@@ -159,9 +155,7 @@ package alternativa.engine3d.objects {
 
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function updateBoundBox(boundBox:BoundBox, transform:Transform3D = null):void {
 			if (geometry != null) {
 				geometry.updateBoundBox(boundBox, transform);
@@ -181,6 +175,7 @@ package alternativa.engine3d.objects {
 					cachedPrograms[cachedContext3D] = shaderProgram;
 				}
 			}
+			_colorVec[3] = alpha;
 			geometry.getDrawUnits(camera, _colorVec, thickness, this, shaderProgram);
 		}
 
@@ -288,15 +283,15 @@ package alternativa.engine3d.objects {
 				}
 			}
 			result.calculateBoundBox();
-			result._x = mesh._x;
-			result._y = mesh._y;
-			result._z = mesh._z;
-			result._rotationX = mesh._rotationX;
-			result._rotationY = mesh._rotationY;
-			result._rotationZ = mesh._rotationZ;
-			result._scaleX = mesh._scaleX;
-			result._scaleY = mesh._scaleY;
-			result._scaleZ = mesh._scaleZ;
+			result.x = mesh.x;
+			result.y = mesh.y;
+			result.z = mesh.z;
+			result.rotationX = mesh.rotationX;
+			result.rotationY = mesh.rotationY;
+			result.rotationZ = mesh.rotationZ;
+			result.scaleX = mesh.scaleX;
+			result.scaleY = mesh.scaleY;
+			result.scaleZ = mesh.scaleZ;
 			return result;
 		}
 
@@ -314,21 +309,19 @@ package alternativa.engine3d.objects {
 						vertices[index] + normals[index]*length, vertices[int(index + 1)] + normals[int(index + 1)]*length, vertices[int(index + 2)] + normals[int(index + 2)]*length);
 			}
 			result.calculateBoundBox();
-			result._x = mesh._x;
-			result._y = mesh._y;
-			result._z = mesh._z;
-			result._rotationX = mesh._rotationX;
-			result._rotationY = mesh._rotationY;
-			result._rotationZ = mesh._rotationZ;
-			result._scaleX = mesh._scaleX;
-			result._scaleY = mesh._scaleY;
-			result._scaleZ = mesh._scaleZ;
+			result.x = mesh.x;
+			result.y = mesh.y;
+			result.z = mesh.z;
+			result.rotationX = mesh.rotationX;
+			result.rotationY = mesh.rotationY;
+			result.rotationZ = mesh.rotationZ;
+			result.scaleX = mesh.scaleX;
+			result.scaleY = mesh.scaleY;
+			result.scaleZ = mesh.scaleZ;
 			return result;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d static function createTangents(mesh:Mesh, color:uint = 0, alpha:Number = 1, thickness:Number = 1, length:Number = 1):WireFrame {
 			var result:WireFrame = new WireFrame(color, alpha, thickness);
 			var geometry:Geometry = mesh.geometry;
@@ -343,21 +336,19 @@ package alternativa.engine3d.objects {
 						vertices[index] + tangents[int(i*4)]*length, vertices[int(index + 1)] + tangents[int(i*4 + 1)]*length, vertices[int(index + 2)] + tangents[int(i*4 + 2)]*length);
 			}
 			result.calculateBoundBox();
-			result._x = mesh._x;
-			result._y = mesh._y;
-			result._z = mesh._z;
-			result._rotationX = mesh._rotationX;
-			result._rotationY = mesh._rotationY;
-			result._rotationZ = mesh._rotationZ;
-			result._scaleX = mesh._scaleX;
-			result._scaleY = mesh._scaleY;
-			result._scaleZ = mesh._scaleZ;
+			result.x = mesh.x;
+			result.y = mesh.y;
+			result.z = mesh.z;
+			result.rotationX = mesh.rotationX;
+			result.rotationY = mesh.rotationY;
+			result.rotationZ = mesh.rotationZ;
+			result.scaleX = mesh.scaleX;
+			result.scaleY = mesh.scaleY;
+			result.scaleZ = mesh.scaleZ;
 			return result;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d static function createBinormals(mesh:Mesh, color:uint = 0, alpha:Number = 1, thickness:Number = 1, length:Number = 1):WireFrame {
 			var result:WireFrame = new WireFrame(color, alpha, thickness);
 			var geometry:Geometry = mesh.geometry;
@@ -379,15 +370,15 @@ package alternativa.engine3d.objects {
 						vertices[index] + binormal.z*length, vertices[int(index + 1)] + binormal.z*length, vertices[int(index + 2)] + binormal.z*length);
 			}
 			result.calculateBoundBox();
-			result._x = mesh._x;
-			result._y = mesh._y;
-			result._z = mesh._z;
-			result._rotationX = mesh._rotationX;
-			result._rotationY = mesh._rotationY;
-			result._rotationZ = mesh._rotationZ;
-			result._scaleX = mesh._scaleX;
-			result._scaleY = mesh._scaleY;
-			result._scaleZ = mesh._scaleZ;
+			result.x = mesh.x;
+			result.y = mesh.y;
+			result.z = mesh.z;
+			result.rotationX = mesh.rotationX;
+			result.rotationY = mesh.rotationY;
+			result.rotationZ = mesh.rotationZ;
+			result.scaleX = mesh.scaleX;
+			result.scaleY = mesh.scaleY;
+			result.scaleZ = mesh.scaleZ;
 			return result;
 		}
 

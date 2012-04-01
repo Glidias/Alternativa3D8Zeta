@@ -48,9 +48,7 @@ package alternativa.engine3d.resources {
 			return _texture;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set data(value:TextureBase):void {
 			_texture = value;
 		}

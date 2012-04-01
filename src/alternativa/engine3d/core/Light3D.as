@@ -58,13 +58,9 @@ package alternativa.engine3d.core {
 		 */
 		alternativa3d var blue:Number;
 
-		/**
-		 * @private
-		 */
+		
 		private static var lastLightNumber:uint = 0;
-		/**
-		 * @private
-		 */
+		
 		public function Light3D() {
 			lightID = "l" + lastLightNumber.toString(16);
 			name = "L" + (lastLightNumber++).toString();

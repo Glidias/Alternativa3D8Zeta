@@ -40,34 +40,22 @@ package alternativa.engine3d.core.events {
 			_bubbles = bubbles;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var _target:Object3D;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var _currentTarget:Object3D;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var _bubbles:Boolean;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var _eventPhase:uint = 3;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var stop:Boolean = false;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var stopImmediate:Boolean = false;
 
 		/**

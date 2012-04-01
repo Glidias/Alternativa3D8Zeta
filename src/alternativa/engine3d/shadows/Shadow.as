@@ -29,9 +29,7 @@ package alternativa.engine3d.shadows {
 		 */
 		alternativa3d var type:String = "s";
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var _light:Light3D;
 
 		/**
@@ -46,15 +44,11 @@ package alternativa.engine3d.shadows {
 		 */
 		alternativa3d var fragmentShadowProcedure:Procedure;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function process(camera:Camera3D):void {
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function setup(drawUnit:DrawUnit, vertexLinker:Linker, fragmentLinker:Linker, surface:Surface):void {
 		}
 

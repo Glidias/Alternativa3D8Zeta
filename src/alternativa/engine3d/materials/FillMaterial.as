@@ -58,9 +58,7 @@ package alternativa.engine3d.materials {
 			return (red*0xFF << 16) + (green*0xFF << 8) + blue*0xFF;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set color(value:uint):void {
 			red = ((value >> 16) & 0xFF)/0xFF;
 			green = ((value >> 8) & 0xFF)/0xFF;
@@ -98,6 +96,7 @@ package alternativa.engine3d.materials {
 		 */
 		override alternativa3d function collectDraws(camera:Camera3D, surface:Surface, geometry:Geometry, lights:Vector.<Light3D>, lightsLength:int, objectRenderPriority:int = -1):void {
 			var object:Object3D = surface.object;
+			var alpha:Number = object.alpha * this.alpha;
 			// Strams
 			var positionBuffer:VertexBuffer3D = geometry.getVertexBuffer(VertexAttributes.POSITION);
 			// Check validity

@@ -62,13 +62,13 @@ package alternativa.engine3d.animation {
 
 		public function apply(object:Object3D):void {
 			if (transformWeightSum > 0) {
-				object._x = transform.x;
-				object._y = transform.y;
-				object._z = transform.z;
+				object.x = transform.x;
+				object.y = transform.y;
+				object.z = transform.z;
 				setEulerAngles(transform.rotation, object);
-				object._scaleX = transform.scaleX;
-				object._scaleY = transform.scaleY;
-				object._scaleZ = transform.scaleZ;
+				object.scaleX = transform.scaleX;
+				object.scaleY = transform.scaleY;
+				object.scaleZ = transform.scaleZ;
 				object.transformChanged = true;
 			}
 
@@ -213,14 +213,14 @@ package alternativa.engine3d.animation {
 			var kk:Number = 1 - qi2 - qj2;
 
 			if (-1 < ii && ii < 1) {
-				object._rotationX = Math.atan2(jj, kk);
-				object._rotationY = -Math.asin(ii);
-				object._rotationZ = Math.atan2(ee, aa);
+				object.rotationX = Math.atan2(jj, kk);
+				object.rotationY = -Math.asin(ii);
+				object.rotationZ = Math.atan2(ee, aa);
 			} else {
-				object._rotationX = 0;
-				object._rotationY = (ii <= -1) ? Math.PI : -Math.PI;
-				object._rotationY *= 0.5;
-				object._rotationZ = Math.atan2(-bb, ff);
+				object.rotationX = 0;
+				object.rotationY = (ii <= -1) ? Math.PI : -Math.PI;
+				object.rotationY *= 0.5;
+				object.rotationZ = Math.atan2(-bb, ff);
 			}
 		}
 

@@ -28,9 +28,7 @@ package alternativa.engine3d.objects {
 	 */
 	public class LOD extends Object3D {
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var levelList:Object3D;
 
 		/**
@@ -162,16 +160,12 @@ package alternativa.engine3d.objects {
 			return num;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function get useLights():Boolean {
 			return true;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function collectDraws(camera:Camera3D, lights:Vector.<Light3D>, lightsLength:int):void {
 			var distance:Number = Math.sqrt(localToCameraTransform.d*localToCameraTransform.d + localToCameraTransform.h*localToCameraTransform.h + localToCameraTransform.l*localToCameraTransform.l);
 			for (var level:Object3D = levelList; level != null; level = level.next) {
@@ -182,9 +176,7 @@ package alternativa.engine3d.objects {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function collectChildDraws(child:Object3D, parent:Object3D, camera:Camera3D, lights:Vector.<Light3D>, lightsLength:int):void {
 			// Composing direct and reverse matrices
 			if (child.transformChanged) child.composeTransforms();
@@ -212,9 +204,7 @@ package alternativa.engine3d.objects {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function fillResources(resources:Dictionary, hierarchy:Boolean = false, resourceType:Class = null):void {
 			if (hierarchy) {
 				for (var current:Object3D = levelList; current != null; current = current.next) {
@@ -253,9 +243,7 @@ package alternativa.engine3d.objects {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function updateBoundBox(boundBox:BoundBox, transform:Transform3D = null):void {
 			for (var current:Object3D = levelList; current != null; current = current.next) {
 				if (current.transformChanged) current.composeTransforms();

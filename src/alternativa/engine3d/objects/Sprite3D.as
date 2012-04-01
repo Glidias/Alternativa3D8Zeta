@@ -130,9 +130,7 @@ package alternativa.engine3d.objects {
 		 */
 		public var alwaysOnTop:Boolean = false;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var surface:Surface;
 
 		/**
@@ -164,24 +162,18 @@ package alternativa.engine3d.objects {
 			return surface.material;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set material(value:Material):void {
 			surface.material = value;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d override function fillResources(resources:Dictionary, hierarchy:Boolean = false, resourceType:Class = null):void {
 			if (surface.material != null) surface.material.fillResources(resources, resourceType);
 			super.fillResources(resources, hierarchy, resourceType);
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function collectDraws(camera:Camera3D, lights:Vector.<Light3D>, lightsLength:int):void {
 			var geometry:Geometry = getGeometry(camera.context3D);
 			if (surface.material != null) surface.material.collectDraws(camera, surface, geometry, lights, lightsLength, alwaysOnTop ? Renderer.NEXT_LAYER : -1);
@@ -189,9 +181,7 @@ package alternativa.engine3d.objects {
 			if (listening) camera.view.addSurfaceToMouseEvents(surface, geometry, transformProcedure);
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function setTransformConstants(drawUnit:DrawUnit, surface:Surface, vertexShader:Linker, camera:Camera3D):void {
 			// Average size
 			var scale:Number = Math.sqrt(localToCameraTransform.a*localToCameraTransform.a + localToCameraTransform.e*localToCameraTransform.e + localToCameraTransform.i*localToCameraTransform.i);
@@ -206,9 +196,7 @@ package alternativa.engine3d.objects {
 			drawUnit.setVertexConstantsFromNumbers(4, localToCameraTransform.d, localToCameraTransform.h, localToCameraTransform.l, rotation);
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function getGeometry(context:Context3D):Geometry {
 			var geometry:Geometry = geometries[context];
 			if (geometry == null) {
@@ -288,9 +276,7 @@ package alternativa.engine3d.objects {
 			alwaysOnTop = src.alwaysOnTop;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function updateBoundBox(boundBox:BoundBox, transform:Transform3D = null):void {
 			var ww:Number = width;
 			var hh:Number = height;

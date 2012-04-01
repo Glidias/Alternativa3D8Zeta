@@ -26,31 +26,23 @@ package alternativa.engine3d.animation.keys {
 
 		private var lastKey:TransformKey;
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function get keyFramesList():Keyframe {
 			return keyList;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function set keyFramesList(value:Keyframe):void {
 			keyList = TransformKey(value);
 		}
 
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function get lastKey():Keyframe {
 			return lastKey;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function set lastKey(value:Keyframe):void {
 			lastKey = TransformKey(value);
 		}
@@ -122,9 +114,7 @@ package alternativa.engine3d.animation.keys {
 			quat.z = zz;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		private function normalizeQuat(quat:Vector3D):void {
 			var d:Number = quat.w*quat.w + quat.x*quat.x + quat.y*quat.y + quat.z*quat.z;
 			if (d == 0) {
@@ -138,9 +128,7 @@ package alternativa.engine3d.animation.keys {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		private function setQuatFromAxisAngle(quat:Vector3D, x:Number, y:Number, z:Number, angle:Number):void {
 			quat.w = Math.cos(0.5*angle);
 			var k:Number = Math.sin(0.5*angle)/Math.sqrt(x*x + y*y + z*z);
@@ -149,14 +137,10 @@ package alternativa.engine3d.animation.keys {
 			quat.z = z*k;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		private static var tempQuat:Vector3D = new Vector3D();
 
-		/**
-		 * @private
-		 */
+		
 		private function createQuatFromEuler(x:Number, y:Number, z:Number):Vector3D {
 			var result:Vector3D = new Vector3D();
 			setQuatFromAxisAngle(result, 1, 0, 0, x);
@@ -171,16 +155,12 @@ package alternativa.engine3d.animation.keys {
 			return result;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		private static var temp:TransformKey = new TransformKey();
 
         private var recentKey:TransformKey = null;
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function blend(time:Number, weight:Number, state:AnimationState):void {
 			var prev:TransformKey;
 			var next:TransformKey;
@@ -211,16 +191,12 @@ package alternativa.engine3d.animation.keys {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function createKeyFrame():Keyframe {
 			return new TransformKey();
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function interpolateKeyFrame(dest:Keyframe, a:Keyframe, b:Keyframe, value:Number):void {
 			TransformKey(dest).interpolate(TransformKey(a), TransformKey(b), value);
 		}

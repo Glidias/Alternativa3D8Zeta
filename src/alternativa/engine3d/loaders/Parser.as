@@ -114,9 +114,7 @@ package alternativa.engine3d.loaders {
 
 		private var cubemaps:Dictionary;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var layersMap:Dictionary;
 
 		alternativa3d var layers:Vector.<String>;
@@ -159,9 +157,7 @@ package alternativa.engine3d.loaders {
 			layers = null;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function init():void {
 			hierarchy = new Vector.<Object3D>();
 			objects = new Vector.<Object3D>();
@@ -683,15 +679,15 @@ package alternativa.engine3d.loaders {
 			result.name = source.name;
 			result.visible = source.visible;
 			result.boundBox = source.boundBox ? source.boundBox.clone() : null;
-			result._x = source._x;
-			result._y = source._y;
-			result._z = source._z;
-			result._rotationX = source._rotationX;
-			result._rotationY = source._rotationY;
-			result._rotationZ = source._rotationZ;
-			result._scaleX = source._scaleX;
-			result._scaleY = source._scaleY;
-			result._scaleZ = source._scaleZ;
+			result.x = source.x;
+			result.y = source.y;
+			result.z = source.z;
+			result.rotationX = source.rotationX;
+			result.rotationY = source.rotationY;
+			result.rotationZ = source.rotationZ;
+			result.scaleX = source.scaleX;
+			result.scaleY = source.scaleY;
+			result.scaleZ = source.scaleZ;
 			result.composeTransforms();
 			return result;
 		}

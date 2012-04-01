@@ -27,9 +27,7 @@ package alternativa.engine3d.materials {
 	 */
 	public class Material {
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function get canDrawInShadowMap():Boolean {return true}
 
 		/**

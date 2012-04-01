@@ -79,9 +79,7 @@ package alternativa.engine3d.resources {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function createMips(texture:Texture, bitmapData:BitmapData):void {
 			rect.width = bitmapData.width;
 			rect.height = bitmapData.height;

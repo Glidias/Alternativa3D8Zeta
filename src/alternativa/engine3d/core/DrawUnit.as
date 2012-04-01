@@ -139,9 +139,7 @@ package alternativa.engine3d.core {
 			vertexConstants[offset] = transform.l;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function setProjectionConstants(camera:Camera3D, firstRegister:int, transform:Transform3D = null):void {
 			if (uint(firstRegister) > 124) throw new Error("Register index is out of bounds.");
 			var offset:int = firstRegister << 2;

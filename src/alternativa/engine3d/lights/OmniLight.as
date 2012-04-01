@@ -45,9 +45,7 @@ package alternativa.engine3d.lights {
 			calculateBoundBox();
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function updateBoundBox(boundBox:BoundBox, transform:Transform3D = null):void {
 			if (transform != null) {
 
@@ -61,9 +59,7 @@ package alternativa.engine3d.lights {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function checkBound(targetObject:Object3D):Boolean {
 			var rScale:Number = Math.sqrt(lightToObjectTransform.a*lightToObjectTransform.a + lightToObjectTransform.e*lightToObjectTransform.e + lightToObjectTransform.i*lightToObjectTransform.i);
 			rScale += Math.sqrt(lightToObjectTransform.b*lightToObjectTransform.b + lightToObjectTransform.f*lightToObjectTransform.f + lightToObjectTransform.j*lightToObjectTransform.j);

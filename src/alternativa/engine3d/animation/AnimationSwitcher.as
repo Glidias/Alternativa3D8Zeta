@@ -39,9 +39,7 @@ package alternativa.engine3d.animation {
 		 */
 		private var fadingSpeed:Number = 0;
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function update(elapsed:Number, weight:Number):void {
 			// TODO : make fade if it required only
 			var interval:Number = speed * elapsed;
@@ -103,9 +101,7 @@ package alternativa.engine3d.animation {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function setController(value:AnimationController):void {
 			this.controller = value;
 			for (var i:int = 0; i < _numAnimations; i++) {
@@ -114,9 +110,7 @@ package alternativa.engine3d.animation {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function removeNode(node:AnimationNode):void {
 			removeAnimation(node);
 		}

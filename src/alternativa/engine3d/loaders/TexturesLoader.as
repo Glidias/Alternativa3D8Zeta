@@ -73,9 +73,7 @@ package alternativa.engine3d.loaders {
 			this.context = context;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function getTexture(url:String):TextureBase {
 			return textures[url];
 		}

@@ -50,9 +50,7 @@ package alternativa.engine3d.objects {
 			return _materials;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set materials(value:Vector.<Material>):void {
 			_materials = value;
 			if (value != null) {
@@ -72,9 +70,7 @@ package alternativa.engine3d.objects {
 			return _loop;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set loop(value:Boolean):void {
 			_loop = value;
 			frame = _frame;
@@ -89,9 +85,7 @@ package alternativa.engine3d.objects {
 			return _frame;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set frame(value:int):void {
 			_frame = value;
 			if (_materials != null) {
@@ -107,9 +101,7 @@ package alternativa.engine3d.objects {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d override function fillResources(resources:Dictionary, hierarchy:Boolean = false, resourceType:Class = null):void {
 			if (materials != null) {
 				for each (var material:Material in materials) {

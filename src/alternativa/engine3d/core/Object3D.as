@@ -130,20 +130,18 @@ package alternativa.engine3d.core {
 		 */
 		public var userData:Object;
 
-		/**
-		 * @private
-		 */
+		
 		public var useShadow:Boolean = true;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d static const trm:Transform3D = new Transform3D();
 
 		/**
 		 * Name of the object.
 		 */
 		public var name:String;
+		
+		public var alpha:Number = 1;
 
 		/**
 		 * Whether or not the display object is visible.
@@ -187,287 +185,78 @@ package alternativa.engine3d.core {
 		 */
 		public var boundBox:BoundBox;
 
-		/**
-		 * @private
-		 */
-		alternativa3d var _x:Number = 0;
 
-		/**
-		 * @private
-		 */
-		alternativa3d var _y:Number = 0;
+		public var x:Number = 0;
 
-		/**
-		 * @private
-		 */
-		alternativa3d var _z:Number = 0;
+		public var y:Number = 0;
 
-		/**
-		 * @private
-		 */
-		alternativa3d var _rotationX:Number = 0;
+		public var z:Number = 0;
 
-		/**
-		 * @private
-		 */
-		alternativa3d var _rotationY:Number = 0;
+		public var rotationX:Number = 0;
 
-		/**
-		 * @private
-		 */
-		alternativa3d var _rotationZ:Number = 0;
+		public var rotationY:Number = 0;
 
-		/**
-		 * @private
-		 */
-		alternativa3d var _scaleX:Number = 1;
+		public var rotationZ:Number = 0;
 
-		/**
-		 * @private
-		 */
-		alternativa3d var _scaleY:Number = 1;
+		public var scaleX:Number = 1;
 
-		/**
-		 * @private
-		 */
-		alternativa3d var _scaleZ:Number = 1;
+		public var scaleY:Number = 1;
 
-		/**
-		 * @private
-		 */
+		public var scaleZ:Number = 1;
+
+		
 		alternativa3d var _parent:Object3D;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var childrenList:Object3D;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var next:Object3D;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var transform:Transform3D = new Transform3D();
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var inverseTransform:Transform3D = new Transform3D();
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var transformChanged:Boolean = true;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var cameraToLocalTransform:Transform3D = new Transform3D();
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var localToCameraTransform:Transform3D = new Transform3D();
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var localToGlobalTransform:Transform3D = new Transform3D();
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var globalToLocalTransform:Transform3D = new Transform3D();
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var culling:int;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var listening:Boolean;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var distance:Number;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var bubbleListeners:Object;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var captureListeners:Object;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var transformProcedure:Procedure;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var deltaTransformProcedure:Procedure;
-
-		/**
-		 * X coordinate.
-		 */
-		public function get x():Number {
-			return _x;
-		}
-
-		/**
-		 * @private
-		 */
-		public function set x(value:Number):void {
-			if (_x != value) {
-				_x = value;
-				transformChanged = true;
-			}
-		}
-
-		/**
-		 * Y coordinate.
-		 */
-		public function get y():Number {
-			return _y;
-		}
-
-		/**
-		 * @private
-		 */
-		public function set y(value:Number):void {
-			if (_y != value) {
-				_y = value;
-				transformChanged = true;
-			}
-		}
-
-		/**
-		 *  Z coordinate.
-		 */
-		public function get z():Number {
-			return _z;
-		}
-
-		/**
-		 * @private
-		 */
-		public function set z(value:Number):void {
-			if (_z != value) {
-				_z = value;
-				transformChanged = true;
-			}
-		}
-
-		/**
-		 *  The  angle of rotation of <code>Object3D</code> around the X-axis expressed in radians.
-		 */
-		public function get rotationX():Number {
-			return _rotationX;
-		}
-
-		/**
-		 * @private
-		 */
-		public function set rotationX(value:Number):void {
-			if (_rotationX != value) {
-				_rotationX = value;
-				transformChanged = true;
-			}
-		}
-
-		/**
-		 * The  angle of rotation of <code>Object3D</code> around the Y-axis expressed in radians.
-		 */
-		public function get rotationY():Number {
-			return _rotationY;
-		}
-
-		/**
-		 * @private
-		 */
-		public function set rotationY(value:Number):void {
-			if (_rotationY != value) {
-				_rotationY = value;
-				transformChanged = true;
-			}
-		}
-
-		/**
-		 * The  angle of rotation of <code>Object3D</code> around the Z-axis expressed in radians.
-		 */
-		public function get rotationZ():Number {
-			return _rotationZ;
-		}
-
-		/**
-		 * @private
-		 */
-		public function set rotationZ(value:Number):void {
-			if (_rotationZ != value) {
-				_rotationZ = value;
-				transformChanged = true;
-			}
-		}
-
-		/**
-		 * The scale of the <code>Object3D</code> along the X-axis.
-		 */
-		public function get scaleX():Number {
-			return _scaleX;
-		}
-
-		/**
-		 * @private
-		 */
-		public function set scaleX(value:Number):void {
-			if (_scaleX != value) {
-				_scaleX = value;
-				transformChanged = true;
-			}
-		}
-
-		/**
-		 * The scale of the <code>Object3D</code> along the Y-axis.
-		 */
-		public function get scaleY():Number {
-			return _scaleY;
-		}
-
-		/**
-		 * @private
-		 */
-		public function set scaleY(value:Number):void {
-			if (_scaleY != value) {
-				_scaleY = value;
-				transformChanged = true;
-			}
-		}
-
-		/**
-		 * The scale of the <code>Object3D</code> along the Z-axis.
-		 */
-		public function get scaleZ():Number {
-			return _scaleZ;
-		}
-
-		/**
-		 * @private
-		 */
-		public function set scaleZ(value:Number):void {
-			if (_scaleZ != value) {
-				_scaleZ = value;
-				transformChanged = true;
-			}
+		
+		public function invalidate():void {
+			transformChanged = true;
 		}
 
 		/**
@@ -479,23 +268,21 @@ package alternativa.engine3d.core {
 			return new Matrix3D(Vector.<Number>([transform.a, transform.e, transform.i, 0, transform.b, transform.f, transform.j, 0, transform.c, transform.g, transform.k, 0, transform.d, transform.h, transform.l, 1]));
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set matrix(value:Matrix3D):void {
 			var v:Vector.<Vector3D> = value.decompose();
 			var t:Vector3D = v[0];
 			var r:Vector3D = v[1];
 			var s:Vector3D = v[2];
-			_x = t.x;
-			_y = t.y;
-			_z = t.z;
-			_rotationX = r.x;
-			_rotationY = r.y;
-			_rotationZ = r.z;
-			_scaleX = s.x;
-			_scaleY = s.y;
-			_scaleZ = s.z;
+			x = t.x;
+			y = t.y;
+			z = t.z;
+			rotationX = r.x;
+			rotationY = r.y;
+			rotationZ = r.z;
+			scaleX = s.x;
+			scaleY = s.y;
+			scaleZ = s.z;
 			transformChanged = true;
 		}
 
@@ -513,9 +300,7 @@ package alternativa.engine3d.core {
 			return intersectRayChildren(origin, direction);
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function intersectRayChildren(origin:Vector3D, direction:Vector3D):RayIntersectionData {
 			var minTime:Number = 1e22;
 			var minData:RayIntersectionData = null;
@@ -600,9 +385,7 @@ package alternativa.engine3d.core {
 			return res;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function get useLights():Boolean {
 			return false;
 		}
@@ -619,10 +402,12 @@ package alternativa.engine3d.core {
 			// Fill values of th boundBox
 			updateBoundBox(boundBox, null);
 		}
+		
+		public final function calculateBounds():void {
+			calculateBoundBox();
+		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function updateBoundBox(boundBox:BoundBox, transform:Transform3D = null):void {
 		}
 
@@ -788,9 +573,7 @@ package alternativa.engine3d.core {
 			return _parent;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function removeFromParent():void {
 			if (_parent != null) {
 				_parent.removeFromList(this);
@@ -1160,9 +943,7 @@ package alternativa.engine3d.core {
 			}
 		}
 		
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function removeFromList(child:Object3D):Object3D {
 			var prev:Object3D;
 			for (var current:Object3D = childrenList; current != null; current = current.next) {
@@ -1199,9 +980,7 @@ package alternativa.engine3d.core {
 			return res;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function fillResources(resources:Dictionary, hierarchy:Boolean = false, resourceType:Class = null):void {
 			if (hierarchy) {
 				for (var child:Object3D = childrenList; child != null; child = child.next) {
@@ -1210,66 +989,60 @@ package alternativa.engine3d.core {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function composeTransforms():void {
 			// Matrix
-			var cosX:Number = Math.cos(_rotationX);
-			var sinX:Number = Math.sin(_rotationX);
-			var cosY:Number = Math.cos(_rotationY);
-			var sinY:Number = Math.sin(_rotationY);
-			var cosZ:Number = Math.cos(_rotationZ);
-			var sinZ:Number = Math.sin(_rotationZ);
+			var cosX:Number = Math.cos(rotationX);
+			var sinX:Number = Math.sin(rotationX);
+			var cosY:Number = Math.cos(rotationY);
+			var sinY:Number = Math.sin(rotationY);
+			var cosZ:Number = Math.cos(rotationZ);
+			var sinZ:Number = Math.sin(rotationZ);
 			var cosZsinY:Number = cosZ*sinY;
 			var sinZsinY:Number = sinZ*sinY;
-			var cosYscaleX:Number = cosY*_scaleX;
-			var sinXscaleY:Number = sinX*_scaleY;
-			var cosXscaleY:Number = cosX*_scaleY;
-			var cosXscaleZ:Number = cosX*_scaleZ;
-			var sinXscaleZ:Number = sinX*_scaleZ;
+			var cosYscaleX:Number = cosY*scaleX;
+			var sinXscaleY:Number = sinX*scaleY;
+			var cosXscaleY:Number = cosX*scaleY;
+			var cosXscaleZ:Number = cosX*scaleZ;
+			var sinXscaleZ:Number = sinX*scaleZ;
 			transform.a = cosZ*cosYscaleX;
 			transform.b = cosZsinY*sinXscaleY - sinZ*cosXscaleY;
 			transform.c = cosZsinY*cosXscaleZ + sinZ*sinXscaleZ;
-			transform.d = _x;
+			transform.d = x;
 			transform.e = sinZ*cosYscaleX;
 			transform.f = sinZsinY*sinXscaleY + cosZ*cosXscaleY;
 			transform.g = sinZsinY*cosXscaleZ - cosZ*sinXscaleZ;
-			transform.h = _y;
-			transform.i = -sinY*_scaleX;
+			transform.h = y;
+			transform.i = -sinY*scaleX;
 			transform.j = cosY*sinXscaleY;
 			transform.k = cosY*cosXscaleZ;
-			transform.l = _z;
+			transform.l = z;
 			// Inverse matrix
 			var sinXsinY:Number = sinX*sinY;
-			cosYscaleX = cosY/_scaleX;
-			cosXscaleY = cosX/_scaleY;
-			sinXscaleZ = -sinX/_scaleZ;
-			cosXscaleZ = cosX/_scaleZ;
+			cosYscaleX = cosY/scaleX;
+			cosXscaleY = cosX/scaleY;
+			sinXscaleZ = -sinX/scaleZ;
+			cosXscaleZ = cosX/scaleZ;
 			inverseTransform.a = cosZ*cosYscaleX;
 			inverseTransform.b = sinZ*cosYscaleX;
-			inverseTransform.c = -sinY/_scaleX;
-			inverseTransform.d = -inverseTransform.a*_x - inverseTransform.b*_y - inverseTransform.c*_z;
-			inverseTransform.e = sinXsinY*cosZ/_scaleY - sinZ*cosXscaleY;
-			inverseTransform.f = cosZ*cosXscaleY + sinXsinY*sinZ/_scaleY;
-			inverseTransform.g = sinX*cosY/_scaleY;
-			inverseTransform.h = -inverseTransform.e*_x - inverseTransform.f*_y - inverseTransform.g*_z;
+			inverseTransform.c = -sinY/scaleX;
+			inverseTransform.d = -inverseTransform.a*x - inverseTransform.b*y - inverseTransform.c*z;
+			inverseTransform.e = sinXsinY*cosZ/scaleY - sinZ*cosXscaleY;
+			inverseTransform.f = cosZ*cosXscaleY + sinXsinY*sinZ/scaleY;
+			inverseTransform.g = sinX*cosY/scaleY;
+			inverseTransform.h = -inverseTransform.e*x - inverseTransform.f*y - inverseTransform.g*z;
 			inverseTransform.i = cosZ*sinY*cosXscaleZ - sinZ*sinXscaleZ;
 			inverseTransform.j = cosZ*sinXscaleZ + sinY*sinZ*cosXscaleZ;
 			inverseTransform.k = cosY*cosXscaleZ;
-			inverseTransform.l = -inverseTransform.i*_x - inverseTransform.j*_y - inverseTransform.k*_z;
+			inverseTransform.l = -inverseTransform.i*x - inverseTransform.j*y - inverseTransform.k*z;
 			transformChanged = false;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function calculateVisibility(camera:Camera3D):void {
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function calculateChildrenVisibility(camera:Camera3D):void {
 			for (var child:Object3D = childrenList; child != null; child = child.next) {
 				if (child.visible) {
@@ -1294,15 +1067,11 @@ package alternativa.engine3d.core {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function collectDraws(camera:Camera3D, lights:Vector.<Light3D>, lightsLength:int):void {
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function collectChildrenDraws(camera:Camera3D, lights:Vector.<Light3D>, lightsLength:int):void {
 			var i:int;
 			var light:Light3D;
@@ -1352,15 +1121,11 @@ package alternativa.engine3d.core {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function collectGeometry(collider:EllipsoidCollider, excludedObjects:Dictionary):void {
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function collectChildrenGeometry(collider:EllipsoidCollider, excludedObjects:Dictionary):void {
 			for (var child:Object3D = childrenList; child != null; child = child.next) {
 				if (excludedObjects == null || !excludedObjects[child]) {
@@ -1386,9 +1151,7 @@ package alternativa.engine3d.core {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function setTransformConstants(drawUnit:DrawUnit, surface:Surface, vertexShader:Linker, camera:Camera3D):void {
 		}
 
@@ -1417,15 +1180,15 @@ package alternativa.engine3d.core {
 			doubleClickEnabled = source.doubleClickEnabled;
 			useHandCursor = source.useHandCursor;
 			boundBox = source.boundBox ? source.boundBox.clone() : null;
-			_x = source._x;
-			_y = source._y;
-			_z = source._z;
-			_rotationX = source._rotationX;
-			_rotationY = source._rotationY;
-			_rotationZ = source._rotationZ;
-			_scaleX = source._scaleX;
-			_scaleY = source._scaleY;
-			_scaleZ = source._scaleZ;
+			x = source.x;
+			y = source.y;
+			z = source.z;
+			rotationX = source.rotationX;
+			rotationY = source.rotationY;
+			rotationZ = source.rotationZ;
+			scaleX = source.scaleX;
+			scaleY = source.scaleY;
+			scaleZ = source.scaleZ;
 			for (var child:Object3D = source.childrenList, lastChild:Object3D; child != null; child = child.next) {
 				var newChild:Object3D = child.clone();
 				if (childrenList != null) {

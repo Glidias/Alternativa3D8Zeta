@@ -51,14 +51,10 @@ package alternativa.engine3d.objects {
 	 */
 	public class Skin extends Mesh {
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var _renderedJoints:Vector.<Joint>;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var surfaceJoints:Vector.<Vector.<Joint>>;
 
 		/**
@@ -71,9 +67,7 @@ package alternativa.engine3d.objects {
 		 */
 		alternativa3d var surfaceDeltaTransformProcedures:Vector.<Procedure>;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var maxInfluences:int = 0;
 
 		// key = maxInfluences | numJoints << 16
@@ -400,9 +394,7 @@ package alternativa.engine3d.objects {
 			geometry = newGeometry;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function calculateJointsTransforms(root:Object3D):void {
 			for (var child:Object3D = root.childrenList; child != null; child = child.next) {
 				if (child.transformChanged) child.composeTransforms();
@@ -415,9 +407,7 @@ package alternativa.engine3d.objects {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function updateBoundBox(boundBox:BoundBox, transform:Transform3D = null):void {
 			for (var child:Object3D = childrenList; child != null; child = child.next) {
 				if (child.transformChanged) child.composeTransforms();
@@ -525,16 +515,12 @@ package alternativa.engine3d.objects {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function get renderedJoints():Vector.<Joint> {
 			return _renderedJoints;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set renderedJoints(value:Vector.<Joint>):void {
 			//If skin is not divided, change number of bonesfor each surface
 			for (var i:int = 0; i < _surfacesLength; i++) {
@@ -562,9 +548,7 @@ package alternativa.engine3d.objects {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function collectDraws(camera:Camera3D, lights:Vector.<Light3D>, lightsLength:int):void {
 			if (geometry == null) return;
 			// Calculate joints matrices

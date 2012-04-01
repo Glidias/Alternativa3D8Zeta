@@ -49,45 +49,27 @@ package alternativa.engine3d.materials {
 		private var cachedContext3D:Context3D;
 		private var programsCache:Array;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d static var fogMode:int = FogMode.DISABLED;
-		/**
-		 * @private
-		 */
+		
 		alternativa3d static var fogNear:Number = 1000;
-		/**
-		 * @private
-		 */
+		
 		alternativa3d static var fogFar:Number = 5000;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d static var fogMaxDensity:Number = 1;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d static var fogColorR:Number = 0xC8/255;
-		/**
-		 * @private
-		 */
+		
 		alternativa3d static var fogColorG:Number = 0xA2/255;
-		/**
-		 * @private
-		 */
+		
 		alternativa3d static var fogColorB:Number = 0xC8/255;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d static var fogTexture:TextureResource;
 
-		/**
-		 * @private
-		 */
+		
 		static alternativa3d const _passReflectionProcedure:Procedure = new Procedure([
 			// i0 = position, i1 = normal
 			"#v1=vNormal",
@@ -96,9 +78,7 @@ package alternativa.engine3d.materials {
 			"mov v1, i1"
 		], "passReflectionProcedure");
 
-		/**
-		 * @private
-		 */
+		
 		static alternativa3d const _applyReflectionProcedure:Procedure = getApplyReflectionProcedure();
 
 		private static function getApplyReflectionProcedure():Procedure {
@@ -121,9 +101,7 @@ package alternativa.engine3d.materials {
 			return result;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		static alternativa3d const _applyReflectionNormalMapProcedure:Procedure = getApplyReflectionNormalMapProcedure();
 
 		private static function getApplyReflectionNormalMapProcedure():Procedure {
@@ -145,9 +123,7 @@ package alternativa.engine3d.materials {
 			return result;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		static alternativa3d const _blendReflection:Procedure = new Procedure([
 			"#c0=cAlpha",
 			"mul t1.xyz, i0.xyz, c0.y",
@@ -157,9 +133,7 @@ package alternativa.engine3d.materials {
 			"mov o0, t0"
 		], "blendReflection");
 
-		/**
-		 * @private
-		 */
+		
 		static alternativa3d const _blendReflectionMap:Procedure = new Procedure([
 			"#c0=cCamera",
 			"#c1=cAlpha",
@@ -321,9 +295,7 @@ package alternativa.engine3d.materials {
 			return _normalMapSpace;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set normalMapSpace(value:int):void {
 			if (value != NormalMapSpace.TANGENT_RIGHT_HANDED && value != NormalMapSpace.TANGENT_LEFT_HANDED && value != NormalMapSpace.OBJECT) {
 				throw new ArgumentError("Value must be a constant from the NormalMapSpace class");
@@ -340,9 +312,7 @@ package alternativa.engine3d.materials {
 			return _normalMap;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set normalMap(value:TextureResource):void {
 			_normalMap = value;
 			dirty();
@@ -355,9 +325,7 @@ package alternativa.engine3d.materials {
 			return _environmentMap;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set environmentMap(value:TextureResource):void {
 			_environmentMap = value;
 			dirty();
@@ -370,9 +338,7 @@ package alternativa.engine3d.materials {
 			return _reflectionMap;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set reflectionMap(value:TextureResource):void {
 			_reflectionMap = value;
 			dirty();
@@ -385,9 +351,7 @@ package alternativa.engine3d.materials {
 			return _lightMap;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set lightMap(value:TextureResource):void {
 			_lightMap = value;
 			dirty();
@@ -403,24 +367,16 @@ package alternativa.engine3d.materials {
 		 */
 		public var lightMapChannel:uint = 1;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var _normalMap:TextureResource;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var _environmentMap:TextureResource;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var _reflectionMap:TextureResource;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var _lightMap:TextureResource;
 
 		private var localToGlobalTransform:Transform3D = new Transform3D();
@@ -473,9 +429,7 @@ package alternativa.engine3d.materials {
 			_normalMapSpace = eMaterial._normalMapSpace;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d override function fillResources(resources:Dictionary, resourceType:Class):void {
 			super.alternativa3d::fillResources(resources, resourceType);
 			if (_environmentMap != null && A3DUtils.checkParent(getDefinitionByName(getQualifiedClassName(_environmentMap)) as Class, resourceType)) {
@@ -608,9 +562,7 @@ package alternativa.engine3d.materials {
 			return new EnvironmentMaterialShaderProgram(vertexLinker, fragmentLinker);
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function getProceduresCRC32(targetObject:Object3D, opacityMap:TextureResource, alphaTest:int):uint {
 			var crc:uint = 0xFFFFFFFF;
 			var procedureCRC:uint;
@@ -804,9 +756,7 @@ package alternativa.engine3d.materials {
 			return program;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function collectDraws(camera:Camera3D, surface:Surface, geometry:Geometry, lights:Vector.<Light3D>, lightsLength:int, objectRenderPriority:int = -1):void {
 			if (diffuseMap == null || diffuseMap._texture == null) return;
 			if (_environmentMap == null || _environmentMap._texture == null || !(_environmentMap._texture is CubeTexture)) return;
@@ -856,9 +806,7 @@ package alternativa.engine3d.materials {
 		}
 
 //
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function dirty():void {
 			for each (var program:EnvironmentMaterialShaderProgram in programsCache) {
 				program.dirty = true;

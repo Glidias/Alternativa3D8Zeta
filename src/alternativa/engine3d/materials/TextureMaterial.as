@@ -42,9 +42,7 @@ package alternativa.engine3d.materials {
 	 */
 	public class TextureMaterial extends Material {
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d override function get canDrawInShadowMap():Boolean {
 			return opaquePass && alphaThreshold == 0;
 		}
@@ -141,7 +139,7 @@ package alternativa.engine3d.materials {
 		/**
 		 *  Transparency.
 		 */
-		public var alpha:Number = 1;
+		//public var alpha:Number = 1;
 		
 		/**
 		 * Creates a new TextureMaterial instance.
@@ -149,15 +147,13 @@ package alternativa.engine3d.materials {
 		 * @param diffuseMap Diffuse map.
 		 * @param alpha Transparency.
 		 */
-		public function TextureMaterial(diffuseMap:TextureResource = null, opacityMap:TextureResource = null, alpha:Number = 1) {
+		public function TextureMaterial(diffuseMap:TextureResource = null, opacityMap:TextureResource = null) { //, alpha:Number = 1
 			this.diffuseMap = diffuseMap;
 			this.opacityMap = opacityMap;
-			this.alpha = alpha;
+			//this.alpha = alpha;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function fillResources(resources:Dictionary, resourceType:Class):void {
 			super.fillResources(resources, resourceType);
 			if (diffuseMap != null && A3DUtils.checkParent(getDefinitionByName(getQualifiedClassName(diffuseMap)) as Class, resourceType)) {
@@ -231,7 +227,7 @@ package alternativa.engine3d.materials {
 			//Constants
 			object.setTransformConstants(drawUnit, surface, program.vertexShader, camera);
 			drawUnit.setProjectionConstants(camera, program.vertexShader.getVariableIndex("cProjMatrix"), object.localToCameraTransform);
-			drawUnit.setFragmentConstantsFromNumbers(program.fragmentShader.getVariableIndex("cThresholdAlpha"), alphaThreshold, 0, 0, alpha);
+			drawUnit.setFragmentConstantsFromNumbers(program.fragmentShader.getVariableIndex("cThresholdAlpha"), alphaThreshold, 0, 0, object.alpha);
 			// Textures
 			drawUnit.setTextureAt(program.fragmentShader.getVariableIndex("sDiffuse"), diffuseMap._texture);
 			if (opacityMap != null) {
@@ -240,11 +236,10 @@ package alternativa.engine3d.materials {
 			return drawUnit;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function collectDraws(camera:Camera3D, surface:Surface, geometry:Geometry, lights:Vector.<Light3D>, lightsLength:int, objectRenderPriority:int = -1):void {
 			var object:Object3D = surface.object;
+			var alpha:Number = object.alpha;
 			
 			// Buffers
 			var positionBuffer:VertexBuffer3D = geometry.getVertexBuffer(VertexAttributes.POSITION);
@@ -308,7 +303,7 @@ package alternativa.engine3d.materials {
 		 * @inheritDoc
 		 */
 		override public function clone():Material {
-			var res:TextureMaterial = new TextureMaterial(diffuseMap, opacityMap, alpha);
+			var res:TextureMaterial = new TextureMaterial(diffuseMap, opacityMap); //alpha
 			res.clonePropertiesFrom(this);
 			return res;
 		}
@@ -324,7 +319,7 @@ package alternativa.engine3d.materials {
 			opaquePass = tex.opaquePass;
 			transparentPass = tex.transparentPass;
 			alphaThreshold = tex.alphaThreshold;
-			alpha = tex.alpha;
+			//alpha = tex.alpha;
 		}
 
 	}

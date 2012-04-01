@@ -193,9 +193,7 @@ package alternativa.engine3d.objects {
 			transformProcedure = transformProcedureStatic;
 		}
 		
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function collectDraws(camera:Camera3D, lights:Vector.<Light3D>, lightsLength:int):void {
 			for (var i:int = 0; i < _surfacesLength; i++) {
 				var surface:Surface = _surfaces[i];
@@ -205,9 +203,7 @@ package alternativa.engine3d.objects {
 			}
 		}
 		
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function setTransformConstants(drawUnit:DrawUnit, surface:Surface, vertexShader:Linker, camera:Camera3D):void {
 			var max:Number = 0;
 			var dx:Number;

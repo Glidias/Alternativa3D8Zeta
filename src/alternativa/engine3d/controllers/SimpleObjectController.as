@@ -18,7 +18,6 @@ package alternativa.engine3d.controllers {
 	import flash.geom.Point;
 	import flash.geom.Vector3D;
 	import flash.ui.Keyboard;
-	import flash.utils.getTimer;
 
 	/**
 	 * Controller for <code>Object3D</code>. Allow to handle the object with a keyboard and mouse.
@@ -127,8 +126,7 @@ package alternativa.engine3d.controllers {
 		private var mousePoint:Point = new Point();
 		private var mouseLook:Boolean;
 		private var objectTransform:Vector.<Vector3D>;
-	
-		private var time:int;
+
 	
 		/**
 		 * The hash for binding  names of action and functions. The functions should be at a form are follows:
@@ -228,9 +226,7 @@ package alternativa.engine3d.controllers {
 			return _object;
 		}
 	
-		/**
-		 * @private
-		 */
+		
 		public function set object(value:Object3D):void {
 			_object = value;
 			updateObjectTransform();
@@ -246,13 +242,8 @@ package alternativa.engine3d.controllers {
 		/**
 		 * Calculates and sets new object position.
 		 */
-		public function update():void {
+		public function update(frameTime:Number):void {
 			if (_object == null) return;
-	
-			var frameTime:Number = time;
-			time = getTimer();
-			frameTime = 0.001*(time - frameTime);
-			if (frameTime > 0.1) frameTime = 0.1;
 	
 			var moved:Boolean = false;
 	

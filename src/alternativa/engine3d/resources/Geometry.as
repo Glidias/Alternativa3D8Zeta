@@ -53,34 +53,22 @@ package alternativa.engine3d.resources {
 	 */
 	public class Geometry extends Resource {
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var _vertexStreams:Vector.<VertexStream> = new Vector.<VertexStream>();
 		
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var _indexBuffer:IndexBuffer3D;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var _numVertices:int;
 		
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var _indices:Vector.<uint> = new Vector.<uint>();
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var _attributesStreams:Vector.<VertexStream> = new Vector.<VertexStream>();
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var _attributesOffsets:Vector.<int> = new Vector.<int>();
 
 		private var _attributesStrides:Vector.<int> = new Vector.<int>();
@@ -108,9 +96,7 @@ package alternativa.engine3d.resources {
 			return _indices.slice();
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set indices(value:Vector.<uint>):void {
 			if (value == null) {
 				_indices.length = 0;
@@ -126,9 +112,7 @@ package alternativa.engine3d.resources {
 			return _numVertices;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set numVertices(value:int):void {
 			if (_numVertices != value) {
 				// Change buffers.
@@ -962,9 +946,7 @@ package alternativa.engine3d.resources {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function getVertexBuffer(attribute:int):VertexBuffer3D {
 			if (attribute < _attributesStreams.length) {
 				var stream:VertexStream = _attributesStreams[attribute];
@@ -974,9 +956,7 @@ package alternativa.engine3d.resources {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function updateBoundBox(boundBox:BoundBox, transform:Transform3D = null):void {
 			var vBuffer:VertexStream = (VertexAttributes.POSITION < _attributesStreams.length) ? _attributesStreams[VertexAttributes.POSITION] : null;
 			if (vBuffer == null) {

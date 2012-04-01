@@ -25,9 +25,7 @@ package alternativa.engine3d.animation.keys {
 		 */
 		public var object:String;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var _length:Number = 0;
 
 		/**
@@ -43,36 +41,26 @@ package alternativa.engine3d.animation.keys {
 			return _length;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function get keyFramesList():Keyframe {
 			return null;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function set keyFramesList(value:Keyframe):void {
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function get lastKey():Keyframe {
 			return null;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function set lastKey(value:Keyframe):void {
 
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function addKeyToList(key:Keyframe):void {
 			var time:Number = key._time;
 			if (keyFramesList == null) {
@@ -159,9 +147,7 @@ package alternativa.engine3d.animation.keys {
 			return result;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function blend(time:Number, weight:Number, state:AnimationState):void {
 		}
 
@@ -176,22 +162,16 @@ package alternativa.engine3d.animation.keys {
 			return null;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function createKeyFrame():Keyframe {
 			return null;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function interpolateKeyFrame(dest:Keyframe, a:Keyframe, b:Keyframe, value:Number):void {
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function sliceImplementation(dest:Track, start:Number, end:Number):void {
 			var shiftTime:Number = (start > 0) ? start : 0;
 			var prev:Keyframe;

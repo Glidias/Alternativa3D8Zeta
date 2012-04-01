@@ -33,9 +33,7 @@ package alternativa.engine3d.animation {
 	 */
 	public class AnimationClip extends AnimationNode {
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var _objects:Array;
 
 		/**
@@ -63,23 +61,16 @@ package alternativa.engine3d.animation {
 		public var animated:Boolean = true;
 
 		/**
-		 * @private
 		 * Current value of time.
 		 */
-		private var _time:Number = 0;
+		public var time:Number = 0;
 
-		/**
-		 * @private
-		 */
+		
 		private var _numTracks:int = 0;
-		/**
-		 * @private
-		 */
+		
 		private var _tracks:Vector.<Track> = new Vector.<Track>();
 
-		/**
-		 * @private
-		 */
+		
 		private var _notifiersList:AnimationNotify;
 
 		/**
@@ -100,25 +91,19 @@ package alternativa.engine3d.animation {
 			return (_objects == null) ? null : [].concat(_objects);
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set objects(value:Array):void {
 			updateObjects(_objects, controller, value, controller);
 			_objects = (value == null) ? null : [].concat(value);
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function setController(value:AnimationController):void {
 			updateObjects(_objects, controller, _objects, value);
 			this.controller = value;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		private function addObject(object:Object):void {
 			if (_objects == null) {
 				_objects = [object];
@@ -130,9 +115,7 @@ package alternativa.engine3d.animation {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		private function updateObjects(oldObjects:Array, oldController:AnimationController, newObjects:Array, newController:AnimationController):void {
 			var i:int, count:int;
 			if (oldController != null && oldObjects != null) {
@@ -228,33 +211,31 @@ package alternativa.engine3d.animation {
 			return _numTracks;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function update(interval:Number, weight:Number):void {
-			var oldTime:Number = _time;
+			var oldTime:Number = time;
 			if (animated) {
-				_time += interval*speed;
+				time += interval*speed;
 				if (loop) {
-					if (_time < 0) {
+					if (time < 0) {
 		//				_position = (length <= 0) ? 0 : _position % length;
-						_time = 0;
+						time = 0;
 					} else {
-						if (_time >= length) {
+						if (time >= length) {
 							collectNotifiers(oldTime, length);
-							_time = (length <= 0) ? 0 : _time % length;
-							collectNotifiers(0, _time);
+							time = (length <= 0) ? 0 : time % length;
+							collectNotifiers(0, time);
 						} else {
-							collectNotifiers(oldTime, _time);
+							collectNotifiers(oldTime, time);
 						}
 					}
 				} else {
-					if (_time < 0) {
-						_time = 0;
-					} else if (_time >= length) {
-						_time = length;
+					if (time < 0) {
+						time = 0;
+					} else if (time >= length) {
+						time = length;
 					}
-					collectNotifiers(oldTime, _time);
+					collectNotifiers(oldTime, time);
 				}
 			}
 			if (weight > 0) {
@@ -263,44 +244,27 @@ package alternativa.engine3d.animation {
 					if (track.object != null) {
 						var state:AnimationState = controller.getState(track.object);
 						if (state != null) {
-							track.blend(_time, weight, state);
+							track.blend(time, weight, state);
 						}
 					}
 				}
 			}
 		}
 
-		/**
-		 * Current time of animation.
-		 */
-		public function get time():Number {
-			return _time;
-		}
-
-		/**
-		 * @private
-		 */
-		public function set time(value:Number):void {
-			_time = value;
-		}
-
+	
 		/**
 		 * Current normalized time in the interval [0, 1].
 		 */
 		public function get normalizedTime():Number {
-			return (length == 0) ? 0 : _time/length;
+			return (length == 0) ? 0 : time/length;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set normalizedTime(value:Number):void {
-			_time = value*length;
+			time = value*length;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		private function getNumChildren(object:Object):int {
 			if (object is Object3D) {
 				return Object3D(object).numChildren;
@@ -308,9 +272,7 @@ package alternativa.engine3d.animation {
 			return 0;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		private function getChildAt(object:Object, index:int):Object {
 			if (object is Object3D) {
 				return Object3D(object).getChildAt(index);
@@ -318,9 +280,7 @@ package alternativa.engine3d.animation {
 			return null;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		private function addChildren(object:Object):void {
 			for (var i:int = 0, numChildren:int = getNumChildren(object); i < numChildren; i++) {
 				var child:Object = getChildAt(object, i);
@@ -347,9 +307,7 @@ package alternativa.engine3d.animation {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function collectNotifiers(start:Number, end:Number):void {
 			var notify:AnimationNotify = _notifiersList;
 			while (notify != null) {

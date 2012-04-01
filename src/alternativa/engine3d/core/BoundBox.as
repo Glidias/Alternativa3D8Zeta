@@ -200,9 +200,7 @@ package alternativa.engine3d.core {
 			return false;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function checkSphere(sphere:Vector3D):Boolean {
 			return sphere.x + sphere.w > minX && sphere.x - sphere.w < maxX && sphere.y + sphere.w > minY && sphere.y - sphere.w < maxY && sphere.z + sphere.w > minZ && sphere.z - sphere.w < maxZ;
 		}

@@ -34,9 +34,7 @@ package alternativa.engine3d.animation {
 		 */
 		public var balance:Number = 0.5;
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function update(elapsed:Number, weight:Number):void {
 			var w:Number = (balance <= 0) ? 0 : ((balance >= 1) ? 1 : balance);
 			if (_left == null) {
@@ -49,9 +47,7 @@ package alternativa.engine3d.animation {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function setController(value:AnimationController):void {
 			this.controller = value;
 			if (_left != null) {
@@ -62,17 +58,13 @@ package alternativa.engine3d.animation {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function addNode(node:AnimationNode):void {
 			super.addNode(node);
 			node._isActive = true;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function removeNode(node:AnimationNode):void {
 			if (_left == node) {
 				_left = null;

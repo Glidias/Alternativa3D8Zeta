@@ -276,9 +276,7 @@ package alternativa.engine3d.materials {
 			return drawUnit;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function collectDraws(camera:Camera3D, surface:Surface, geometry:Geometry, lights:Vector.<Light3D>, lightsLength:int, objectRenderPriority:int = -1):void {
 			if (diffuseMap == null || diffuseMap._texture == null || opacityMap != null && opacityMap._texture == null) return;
 

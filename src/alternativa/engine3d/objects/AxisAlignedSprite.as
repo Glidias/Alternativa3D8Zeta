@@ -99,9 +99,7 @@ package alternativa.engine3d.objects {
 		 */
 		public var alignToView:Boolean = true;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d var surface:Surface;
 
 		/**
@@ -133,24 +131,18 @@ package alternativa.engine3d.objects {
 			return surface.material;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set material(value:Material):void {
 			surface.material = value;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d override function fillResources(resources:Dictionary, hierarchy:Boolean = false, resourceType:Class = null):void {
 			if (surface.material != null) surface.material.fillResources(resources, resourceType);
 			super.fillResources(resources, hierarchy, resourceType);
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function collectDraws(camera:Camera3D, lights:Vector.<Light3D>, lightsLength:int):void {
 			var geometry:Geometry = getGeometry(camera.context3D);
 			if (surface.material != null) surface.material.collectDraws(camera, surface, geometry, lights, lightsLength);
@@ -158,9 +150,7 @@ package alternativa.engine3d.objects {
 			if (listening) camera.view.addSurfaceToMouseEvents(surface, geometry, transformProcedure);
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function setTransformConstants(drawUnit:DrawUnit, surface:Surface, vertexShader:Linker, camera:Camera3D):void {
 			// Set constants
 			drawUnit.setVertexConstantsFromNumbers(0, originX, originY, width, height);
@@ -171,9 +161,7 @@ package alternativa.engine3d.objects {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function getGeometry(context:Context3D):Geometry {
 			var geometry:Geometry = geometries[context];
 			if (geometry == null) {
@@ -250,9 +238,7 @@ package alternativa.engine3d.objects {
 			alignToView = src.alignToView;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function updateBoundBox(boundBox:BoundBox, transform:Transform3D = null):void {
 			if (transform != null) {
 				// TODO:

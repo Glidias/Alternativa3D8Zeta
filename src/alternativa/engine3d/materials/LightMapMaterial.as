@@ -155,7 +155,7 @@ package alternativa.engine3d.materials {
 			return program;
 		}
 
-		private function getDrawUnit(program:ShaderProgram, camera:Camera3D, surface:Surface, geometry:Geometry, opacityMap:TextureResource):DrawUnit {
+		private function getDrawUnit(program:ShaderProgram, camera:Camera3D, surface:Surface, geometry:Geometry, opacityMap:TextureResource, alpha:Number):DrawUnit {
 			var positionBuffer:VertexBuffer3D = geometry.getVertexBuffer(VertexAttributes.POSITION);
 			var uvBuffer:VertexBuffer3D = geometry.getVertexBuffer(VertexAttributes.TEXCOORDS[0]);
 			var lightMapUVBuffer:VertexBuffer3D = geometry.getVertexBuffer(VertexAttributes.TEXCOORDS[lightMapChannel]);
@@ -183,15 +183,13 @@ package alternativa.engine3d.materials {
 			return drawUnit;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function collectDraws(camera:Camera3D, surface:Surface, geometry:Geometry, lights:Vector.<Light3D>, lightsLength:int, objectRenderPriority:int = -1):void {
 			if (diffuseMap == null || lightMap == null || diffuseMap._texture == null || lightMap._texture == null) return;
 			if (opacityMap != null && opacityMap._texture == null) return;
 
 			var object:Object3D = surface.object;
-
+			var alpha:Number = object.alpha;
 			// Buffers
 			var positionBuffer:VertexBuffer3D = geometry.getVertexBuffer(VertexAttributes.POSITION);
 			var uvBuffer:VertexBuffer3D = geometry.getVertexBuffer(VertexAttributes.TEXCOORDS[0]);
@@ -222,11 +220,11 @@ package alternativa.engine3d.materials {
 					// Alpha test
 					// use opacityMap if it is presented
 					program = getProgram(object, optionsPrograms, camera, opacityMap, 1);
-					drawUnit = getDrawUnit(program, camera, surface, geometry, opacityMap);
+					drawUnit = getDrawUnit(program, camera, surface, geometry, opacityMap, alpha);
 				} else {
 					// do not use opacityMap at all
 					program = getProgram(object, optionsPrograms, camera, null, 0);
-					drawUnit = getDrawUnit(program, camera, surface, geometry, null);
+					drawUnit = getDrawUnit(program, camera, surface, geometry, null, alpha);
 				}
 				// Use z-buffer within DrawCall, draws without blending
 				camera.renderer.addDrawUnit(drawUnit, objectRenderPriority >= 0 ? objectRenderPriority : Renderer.OPAQUE);
@@ -237,11 +235,11 @@ package alternativa.engine3d.materials {
 				if (alphaThreshold <= alpha && !opaquePass) {
 					// Alpha threshold
 					program = getProgram(object, optionsPrograms, camera, opacityMap, 2);
-					drawUnit = getDrawUnit(program, camera, surface, geometry, opacityMap);
+					drawUnit = getDrawUnit(program, camera, surface, geometry, opacityMap, alpha);
 				} else {
 					// There is no Alpha threshold or check z-buffer by previous pass
 					program = getProgram(object, optionsPrograms, camera, opacityMap, 0);
-					drawUnit = getDrawUnit(program, camera, surface, geometry, opacityMap);
+					drawUnit = getDrawUnit(program, camera, surface, geometry, opacityMap, alpha);
 				}
 				// Do not use z-buffer, draws with blending
 				drawUnit.blendSource = Context3DBlendFactor.SOURCE_ALPHA;

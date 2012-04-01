@@ -57,53 +57,31 @@ package alternativa.engine3d.materials {
 		private var cachedContext3D:Context3D;
 		private var programsCache:Dictionary;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d static const DISABLED:int = 0;
-		/**
-		 * @private
-		 */
+		
 		alternativa3d static const SIMPLE:int = 1;
-		/**
-		 * @private
-		 */
+		
 		alternativa3d static const ADVANCED:int = 2;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d static var fogMode:int = DISABLED;
-		/**
-		 * @private
-		 */
+		
 		alternativa3d static var fogNear:Number = 1000;
-		/**
-		 * @private
-		 */
+		
 		alternativa3d static var fogFar:Number = 5000;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d static var fogMaxDensity:Number = 1;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d static var fogColorR:Number = 0xC8/255;
-		/**
-		 * @private
-		 */
+		
 		alternativa3d static var fogColorG:Number = 0xA2/255;
-		/**
-		 * @private
-		 */
+		
 		alternativa3d static var fogColorB:Number = 0xC8/255;
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d static var fogTexture:TextureResource;
 		 //light procedure caching. The key is light3d instance.
 		private static const _lightFragmentProcedures:Dictionary = new Dictionary();
@@ -317,9 +295,7 @@ package alternativa.engine3d.materials {
 			return _normalMapSpace;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		public function set normalMapSpace(value:int):void {
 			if (value != NormalMapSpace.TANGENT_RIGHT_HANDED && value != NormalMapSpace.TANGENT_LEFT_HANDED && value != NormalMapSpace.OBJECT) {
 				throw new ArgumentError("Value must be a constant from the NormalMapSpace class");
@@ -370,9 +346,7 @@ package alternativa.engine3d.materials {
 			this.glossinessMap = glossinessMap;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function fillResources(resources:Dictionary, resourceType:Class):void {
 			super.fillResources(resources, resourceType);
 			if (normalMap != null &&
@@ -396,16 +370,12 @@ package alternativa.engine3d.materials {
 			}
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function getPassUVProcedure():Procedure {
 			return _passUVProcedure;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		alternativa3d function setPassUVProcedureConstants(destination:DrawUnit, vertexLinker:Linker):void {
 		}
 
@@ -686,6 +656,7 @@ package alternativa.engine3d.materials {
 			var tangentsBuffer:VertexBuffer3D = geometry.getVertexBuffer(VertexAttributes.TANGENT4);
 
 			var object:Object3D = surface.object;
+			var alpha:Number = object.alpha;
 
 			// Draw call
 			var drawUnit:DrawUnit = camera.renderer.createDrawUnit(object, program.program, geometry._indexBuffer, surface.indexBegin, surface.numTriangles, program);
@@ -821,16 +792,15 @@ package alternativa.engine3d.materials {
 			return drawUnit;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		override alternativa3d function collectDraws(camera:Camera3D, surface:Surface, geometry:Geometry, lights:Vector.<Light3D>, lightsLength:int, objectRenderPriority:int = -1):void {
 			if (diffuseMap == null || normalMap == null || diffuseMap._texture == null || normalMap._texture == null) return;
 			// Check if textures uploaded in to the context.
 			if (opacityMap != null && opacityMap._texture == null || glossinessMap != null && glossinessMap._texture == null || specularMap != null && specularMap._texture == null || lightMap != null && lightMap._texture == null) return;
 
 			var object:Object3D = surface.object;
-
+			var alpha:Number = object.alpha;
+			
 			// Buffers
 			var positionBuffer:VertexBuffer3D = geometry.getVertexBuffer(VertexAttributes.POSITION);
 			var uvBuffer:VertexBuffer3D = geometry.getVertexBuffer(VertexAttributes.TEXCOORDS[0]);

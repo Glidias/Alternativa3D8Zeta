@@ -245,9 +245,7 @@ package alternativa.engine3d.loaders {
 			return url.substring(0, pathStart) + path + ((pathEnd >= 0) ? url.substring(pathEnd) : "");
 		}
 
-		/**
-		 * @private
-		 */
+		
 		private function mergePath(path:String, base:String, relative:Boolean = false):String {
 			var baseParts:Array = base.split("/");
 			var parts:Array = path.split("/");
@@ -367,9 +365,7 @@ package alternativa.engine3d.loaders {
 			return (clip.numTracks > 0) ? clip : null;
 		}
 
-		/**
-		 * @private
-		 */
+		
 		private static function collectAnimation(clip:AnimationClip, nodes:Vector.<DaeNode>):void {
 			for (var i:int = 0, count:int = nodes.length; i < count; i++) {
 				var node:DaeNode = nodes[i];
